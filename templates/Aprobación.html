@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Event
+{% endblock %}
+
+{% block content %}
+<div class="clearfix">
+  <a class="btn btn-info left" href="{% url 'calendarapp:calendar' %}"> Calendar </a>
+</div>
+
+<form method="post">
+  {% csrf_token %}
+  <center>
+  <table class="form form-table">
+     <label for="recipient-name" class="col-form-label">Comentario</label>
+     <input type="text" id="Comentario" name="Comentario">
+     <label for="recipient-name" class="col-form-label">Aprobación</label>
+      <select name="Aprobacion">
+          <option value="1" > Aprobado</option>
+          <option value="0">No aprobado</option>
+      </select>
+
+    <tr><td colspan="2"><button type="submit" class="btn btn-info right"> Submit </button></td></tr>
+  </table>
+  </center>
+</form>
+{% endblock %}
