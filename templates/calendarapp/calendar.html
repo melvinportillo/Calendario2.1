@@ -8,7 +8,7 @@
 
 {% block breadcrumb %}
   <div>
-      <h1><i class="fa fa-calendar"></i> Calendar</h1>
+      <h1><i class="fa fa-calendar"></i> Calendario</h1>
       <p>Event Calendar</p>
   </div>
   <ul class="app-breadcrumb breadcrumb">
@@ -27,7 +27,7 @@
                     <h4 class="mb-4">Lineas Presupuestarias</h4>
                     {% for event in events_month %}
                       <div class="fc-event">
-                          <h3>{{ event.Proyecto }} :{{ event.Codigo }}</h3>
+                          <h3>{{ event.Proyecto }}: {{ event.Codigo }}</h3>
                           <p>Total: {{ event.Total }}</p>
                           <p>Ejecutado: {{ event.Ejecutado }}</p>
                           <p>En ejecución: {{ event.En_Ejucucion }}</p>
@@ -115,9 +115,12 @@
           // bangladesh Holidays
           // events: 'bn.bd#holiday@group.v.calendar.google.com',
           eventClick: function(arg) {
-            if (confirm('Are you sure you want to delete this event?')) {
-              arg.event.remove()
-            }
+              var titulo = arg.event.title
+            if (confirm('Quieres modificar el evento: "'+titulo+'"')) {
+                var L = titulo.split('#')
+                var idevento = L[1]
+                window.location.replace("/event/"+ idevento +"/details/")
+                            }
           },
           editable: true,
           dayMaxEvents: true, // allow "more" link when too many events

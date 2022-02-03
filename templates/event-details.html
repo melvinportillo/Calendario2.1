@@ -7,21 +7,21 @@ Event Details
 {% block content %}
     <div class="container">
         <div class="clearfix">
-            <a class="btn btn-primary left" href="{% url 'calendarapp:calendar' %}"> Calendar </a>
-            <a class="btn btn-info right mr-2" href="{% url 'calendarapp:event_edit' event.pk %}"> Edit Event </a>
+            <a class="btn btn-primary left" href="{% url 'calendarapp:calendar' %}"> Calendario </a>
+            <a class="btn btn-info right mr-2" href="{% url 'calendarapp:event_edit' event.pk %}"> Editar Evento </a>
         </div>
-        
+
         <div class="clearfix">
-            <h3>Event Name: {{ event.title }}</h3>
-            <p>From <span style="color: gray;">{{ event.start_time }}</span> To <span style="color: gray;">{{ event.end_time }}</span></p>
+            <h3>Nombre del evento: {{ event.title }}</h3>
+            <p>Desde <span style="color: gray;">{{ event.start_time }}</span> hasta <span style="color: gray;">{{ event.end_time }}</span></p>
             <p>Linea Presepuestaria <span style="color: gray;">{{ linea.Codigo }}</span>  Asigando <span style="color: gray;">{{ presupuest }}</span></p>
             <hr>
             <p>{{ event.description }}</p>
         </div>
         <hr>
         <div class="clearfix">
-            <h4 class="left" > Members of this Event</h4>
-            <a class="btn btn-success right" href="{% url 'calendarapp:add_eventmember' event.id %}"> Add Member </a>
+            <h4 class="left" > Miembros de este evento</h4>
+            <a class="btn btn-success right" href="{% url 'calendarapp:add_eventmember' event.id %}"> Agregar Miembro </a>
         </div>
         <table class="table table-bordered">
             <thead>                  
@@ -30,7 +30,7 @@ Event Details
                    <th>Email</th>
                   <th>Observación</th>
                   <th>Aprobado</th>
-                    <th>Action</th>
+                    <th>Acción</th>
                 </tr>
               </thead>
               <tbody>
@@ -42,7 +42,7 @@ Event Details
                     <td>{{ member.Aprobacion }}</td>
 
                     <td>
-                        <a class="btn btn-danger" href="{% url 'calendarapp:remove_event' member.id %}">Remove</a>
+                        <a class="btn btn-danger" href="{% url 'calendarapp:remove_event' member.id %}">Eliminar</a>
                     </td>
                 </tr>
                 {% endfor %}

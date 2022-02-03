@@ -64,12 +64,17 @@ def create_event(request):
         description = form.cleaned_data['description']
         start_time = form.cleaned_data['start_time']
         end_time = form.cleaned_data['end_time']
+        l= Line_Presupuesto.objects.first()
         Event.objects.get_or_create(
             user=request.user,
             title=title,
             description=description,
             start_time=start_time,
-            end_time=end_time
+            end_time=end_time,
+            linea_p=l,
+            Proyecto="ss",
+            Presupuesto=0.0,
+
         )
         return HttpResponseRedirect(reverse('calendarapp:calendar'))
     return render(request, 'event.html', {'form': form})
@@ -338,10 +343,14 @@ def sub_excel(request):
                                 Proyecto=proyecto,
                                 Presupuesto=0.0,
                             )
-                            var+=1
-                            a=Event.objects.get(title=title).id
-                            event = Event.objects.get(id=a)
-
+                            
+                            var += 1
+                            a = Event.objects.filter(title=title).first().id
+                            print (a)
+                            event = Event.objects.filter(id=a).first()
+                            print (event.title)
+                            event.title = title + "#" + str(a)
+                            event.save()
                             for i in lista_responsables:
                                 for j in user_list:
                                     if i == str(j):

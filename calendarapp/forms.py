@@ -12,7 +12,7 @@ class EventForm(ModelForm):
         widgets = {
             'title': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Enter event title'
+                'placeholder': 'Enter eveeeent title'
             }),
             'description': forms.Textarea(attrs={
                 'class': 'form-control',
@@ -26,6 +26,11 @@ class EventForm(ModelForm):
                 attrs={'type': 'datetime-local', 'class': 'form-control'},
                 format='%Y-%m-%dT%H:%M'
             ),
+            'Proyecto': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter eveeeent title'
+            }),
+
         }
         exclude = ['user']
 
