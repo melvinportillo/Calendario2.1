@@ -8,6 +8,7 @@ from accounts.models import User
 
 class EventManager(models.Manager):
     """ Event manager """
+
     def get_all_events(self, user):
         events = Event.objects.filter(
             user=user, is_active=True, is_deleted=False
@@ -35,7 +36,7 @@ class Event(EventAbstract):
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
     Proyecto = models.CharField(max_length=150)
-    Presupuesto= models.FloatField()
+    Presupuesto = models.FloatField()
 
     objects = EventManager()
 
@@ -50,6 +51,7 @@ class Event(EventAbstract):
         url = reverse('calendarapp:event-detail', args=(self.id,))
         return f'{url}'
 
+
 class upload(models.Model):
-    title=models.CharField(max_length=50)
-    upload=models.FileField(upload_to="media")
+    title = models.CharField(max_length=50)
+    upload = models.FileField(upload_to="media")
