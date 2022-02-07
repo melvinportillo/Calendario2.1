@@ -9,6 +9,7 @@ app_name = 'calendarapp'
 
 urlpatterns = [
     path('calender/', views.CalendarViewNew.as_view(), name='calendar'),
+    #path('', other_views.SubirArchivos(), name='archivos'),
     path('calenders/', views.CalendarView.as_view(), name='calendars'),
     path('event/new/', views.create_event, name='event_new'),
     path(

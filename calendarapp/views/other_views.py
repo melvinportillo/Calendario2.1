@@ -12,6 +12,7 @@ from django.urls import reverse_lazy, reverse
 import pandas as pd
 from accounts.models import  user
 from calendarapp.models import EventMember, Event
+from calendarapp.models.event import upload
 from calendarapp.models.linea_presupuesto import Cronogram, Line_Presupuesto
 from calendarapp.utils import Calendar
 from calendarapp.forms import EventForm, AddMemberForm, excel_form
@@ -379,5 +380,12 @@ def Actualizar_Saldos(proyecto):
         cuenta.Saldo=cuenta.Total-total
         cuenta.save()
 
-
+def SubirArchivos(request):
+    if request.method=='POST':
+        title=request.POST['title']
+        upload1=request.FILES['upload']
+        object=upload.objects.create(title=title,upload=upload1)
+        object.save()
+    context=upload.objects.all()
+    return render(request,'index1.html',{'context':context})
 

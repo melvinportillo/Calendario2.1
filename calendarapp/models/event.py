@@ -49,3 +49,7 @@ class Event(EventAbstract):
     def get_html_url(self):
         url = reverse('calendarapp:event-detail', args=(self.id,))
         return f'{url}'
+
+class upload(models.Model):
+    title=models.CharField(max_length=50)
+    upload=models.FileField(upload_to="media")
