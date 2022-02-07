@@ -51,3 +51,4 @@ class excel_form(forms.ModelForm):
         model= Cronogram
         fields = ["Proyecto", "Archivo_excel"]
 
+#form
